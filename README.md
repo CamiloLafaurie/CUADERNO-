@@ -24,6 +24,40 @@ dependiendo de la noches a hospedar se hara valido o no , el descuento
         FinSi
     end sub
 
+# promedio de notas (designar aprovado o no aprovado)
+
+en este programa en base a las notas de un estudiante se sacara su promedio y con ese promedio se decidira si es o no aprovado 
+
+    sub inicio()
+        definir alumno como caracter 
+        definir examenparcial, examenfinal,promediopracticas como real
+        definir final Como Real
+
+        escribir "Digite el nombre del alumno" 
+        leer alumno 
+
+        Escribir "Las notas se calificaran de 1 - 10" 
+
+        Escribir "Digite la nota del examen parcial"
+        leer examenparcial
+        Escribir "Digite la nota del examen final"
+        leer examenfinal
+        Escribir "Digite la nota del promedio de practicas"
+        leer promediopracticas
+
+        final <- (examenparcial+promediopracticas+(examenfinal*2))/3
+
+        si final > 6 entonces 
+            escribir "alumno aprobado: ", alumno 
+            escribir "su promedio es: ", final 
+        sino 
+            
+            escribir alumno, " alumno no aprobado"
+            escribir "su promedio es: ", final 
+	    FinSi
+    end sub
+
+
 # calculo de impuestos anuales
 
 este programa nos calculara la cantidad de impuestos que debe pagar una empresa en base a los ingresos generados en el año 
@@ -109,3 +143,30 @@ aqui ejecutamos la misma funcion que el anterior pero de una forma mas sencilla 
                                 
         End If
     end sub
+
+# celdas (excel)
+
+como asignar de unas celdas y almanecar los datos en otra
+
+    Sub inicio()
+        fila = datos.Cells(2, 7)
+        datos.Cells(fila, 1) = formulario.Cells(8, 4)
+        datos.Cells(fila, 2) = formulario.Cells(10, 4)
+        datos.Cells(fila, 3) = formulario.Cells(12, 4)
+        datos.Cells(fila, 4) = formulario.Cells(14, 4)
+        MsgBox "Datos guardados"
+        datos.Cells(2, 7) = fila + 1
+    end sub
+
+# registro de 15 nombres (celdas de excel)
+
+aqui le pediremos al usuario que ingrese 15 nombres y nuestro programa se encarga de almacenar esos datos en las celdas asignadas
+
+sub inicio()
+        For n = 2 To 16
+        nombre = InputBox("Digite su nombre: " & n)
+        datos.Cells(n, 1) = nombre
+    
+        
+    Next n
+end sub
