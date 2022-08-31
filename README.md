@@ -2,6 +2,8 @@
 documentación y registro de ADSO
 
 # desuento por noche 
+
+sub inicio ()
 dependiendo de la noches a hospedar se hara valido o no , el descuento 
 
     precio<- 100
@@ -20,11 +22,13 @@ dependiendo de la noches a hospedar se hara valido o no , el descuento
         
         
     FinSi
+end sub
 
 # calculo de impuestos anuales
 
 este programa nos calculara la cantidad de impuestos que debe pagar una empresa en base a los ingresos generados en el año 
 
+sub inicio()
     ingreso_anual = InputBox("Digite los ingresos anuales de la empresa: ")
     Total = 0
     impuesto = 0
@@ -66,11 +70,13 @@ este programa nos calculara la cantidad de impuestos que debe pagar una empresa 
         End If
 
     End If
+end sub
 
 # calculo de impuestos anuales (select case)
 
 aqui ejecutamos la misma funcion que el anterior pero de una forma mas sencilla y practica
 
+sub inicio ()
     ingreso_anual = Int(InputBox("Digite los ingresos anuales de la empresa: "))
     aumento = 0
     
@@ -102,3 +108,4 @@ aqui ejecutamos la misma funcion que el anterior pero de una forma mas sencilla 
             MsgBox ("Total impuesto a pagar: ") & aumento
                             
     End If
+end sub
