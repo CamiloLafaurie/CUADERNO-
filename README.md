@@ -1,7 +1,29 @@
 # CUADERNO-
 documentación y registro de ADSO
 
-##calculo de ingresos anuales
+# desuento por noche 
+dependiendo de la noches a hospedar se hara valido o no , el descuento 
+
+precio<- 100
+escribir "Digite el numero de noches"
+leer noches
+
+total <- precio * noches
+
+si noches > 3 entonces 
+	descuento <- total*.05
+	
+	 escribir "Su pago total es: ", total - descuento 
+sino 
+	
+	escribir "su pago total sin descuento es: ", total
+	
+	
+FinSi
+
+# calculo de ingresos anuales
+
+este programa nos calculara la cantidad de impuestos que debe pagar una empresa en base a los ingresos generados en el año 
 
 ingreso_anual = InputBox("Digite los ingresos anuales de la empresa: ")
 Total = 0
