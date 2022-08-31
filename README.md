@@ -21,7 +21,7 @@ sino
 	
 FinSi
 
-# calculo de ingresos anuales
+# calculo de impuestos anuales
 
 este programa nos calculara la cantidad de impuestos que debe pagar una empresa en base a los ingresos generados en el año 
 
@@ -66,3 +66,39 @@ Else
     End If
 
 End If
+
+# calculo de impuestos anuales (select case)
+
+aqui ejecutamos la misma funcion que el anterior pero de una forma mas sencilla y practica
+
+    ingreso_anual = Int(InputBox("Digite los ingresos anuales de la empresa: "))
+    aumento = 0
+    
+    Select Case ingreso_anual
+    
+    Case 0 To 1000
+    MsgBox ("No debe pagar impuestos")
+    
+    Case 1001 To 10000
+    aumento = (ingreso_anual * 0.05)
+    MsgBox ("El total de impuestos a pagar es: ") & aumento
+    
+    Case 10001 To 100000
+    aumento = (ingreso_anual * 0.1)
+    MsgBox ("El total de impuesto a pagar es: ") & aumento
+    
+    Case 100001 To 1000000
+    aumento = (ingreso_anual * 0.15)
+    MsgBox ("El total de impuestos a pagar es: ") & aumento
+    
+    Case 1000000 To 10000001
+    aumento = (ingreso_anual * 0.2)
+    MsgBox ("El total de impuestos a pagar es: ") & aumento
+    
+    End Select
+    
+    If ingreso_anual >= 10000001 Then
+            aumento = (ingreso_anual * 0.25)
+            MsgBox ("Total impuesto a pagar: ") & aumento
+                            
+    End If
