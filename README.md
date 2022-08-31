@@ -24,7 +24,7 @@ dependiendo de la noches a hospedar se hara valido o no , el descuento
         FinSi
     end sub
 
-# promedio de notas (designar aprovado o no aprovado)
+# promedio de notas (designar aprobado o no aprobado)
 
 en este programa en base a las notas de un estudiante se sacara su promedio y con ese promedio se decidira si es o no aprovado 
 
@@ -162,10 +162,10 @@ como asignar de unas celdas y almanecar los datos en otra
 
 aqui le pediremos al usuario que ingrese 15 nombres y nuestro programa se encarga de almacenar esos datos en las celdas asignadas
 
-    sub inicio()
-        For n = 2 To 16
-        nombre = InputBox("Digite su nombre: " & n)
-        datos.Cells(n, 1) = nombre
-        
-        Next n
-    end sub
+	 sub inicio()
+		For n = 2 To 16
+		nombre = InputBox("Digite su nombre: " & n)
+		datos.Cells(n, 1) = nombre
+
+		Next n
+	 end sub
