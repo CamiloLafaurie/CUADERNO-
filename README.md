@@ -1,7 +1,7 @@
 # CUADERNO-
 documentación y registro de ADSO
 
-# desuento por noche 
+# descuento por noche 
 
 dependiendo de la noches a hospedar se hara valido o no , el descuento 
 
