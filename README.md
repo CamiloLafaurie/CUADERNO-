@@ -162,7 +162,6 @@ como asignar de unas celdas y almanecar los datos en otra
 
 aqui le pediremos al usuario que ingrese 15 nombres y nuestro programa se encarga de almacenar esos datos en las celdas asignadas
 
-<<<<<<< HEAD
     sub inicio()
         For n = 2 To 16
         nombre = InputBox("Digite su nombre: " & n)
