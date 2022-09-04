@@ -169,8 +169,9 @@ aqui le pediremos al usuario que ingrese 15 nombres y nuestro programa se encarg
 
         Next n
     end sub
-# calculo de abono de estudiantes 
 
+# calculo de abono de estudiantes 
+en este programa podemos saber el total de una roleccion estudiantil, el promedio por estudiante, y quienes aportaron una suma (en este caso superior a 10k) en especifico dependiendo el valor que nosotros le asignemos 
     Sub inicio()
         
     abono = 0
