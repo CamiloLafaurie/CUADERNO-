@@ -202,3 +202,31 @@ en este programa podemos saber el total de una roleccion estudiantil, el promedi
     MsgBox "Estudiantes que aportaron mas de $10.000:   " & "(" & cant & ")" & " Estudiantes"
             
     End Sub
+    
+    Sub ejercicio()
+    abono = 0
+    no_abono = 0
+    abono10k = 0
+    Total = 0
+    
+    While Total <= 3000000
+        dinero_rec = Int(InputBox("Cuanto va a abonar?"))
+        If dinero_rec > 0 Then
+            abono = abono + 1
+            Total = Total + dinero_rec
+            If dinero_rec >= 10000 Then
+                abono10k = abono10k + 1
+            End If
+        Else
+            no_abono = no_abono + 1
+        End If
+    Wend
+    
+    prom = Total / abono
+    MsgBox "El total recaudado es de $" & Total
+    MsgBox "El promedio del recaudo es de $" & prom
+    MsgBox "La cantidad de estudiantes que donaron " & "(" & abono & ")" & " Estudiantes"
+    MsgBox "La cantidad de estudiantes que no donaron " & "(" & no_abono & ")" & " Estudiantes"
+    MsgBox "Los estudiantes que aportaron una cantidad superior a $10.000:   " & "(" & abono10k & ")" & " Estudiantes"
+        
+End Sub
