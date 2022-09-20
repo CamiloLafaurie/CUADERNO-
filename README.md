@@ -200,33 +200,35 @@ en este programa podemos saber el total de una roleccion estudiantil, el promedi
     MsgBox "Numero de estudiantes que si donaron " & "(" & abono & ")" & " Estudiantes"
     MsgBox "Numero de estudiantes que no donaron " & "(" & no_abono & ")" & " Estudiantes"
     MsgBox "Estudiantes que aportaron mas de $10.000:   " & "(" & cant & ")" & " Estudiantes"
-            
-    End Sub
-    
-    Sub ejercicio()
+    End sub
+# ejrcicio de recaudo con una suma mayor a x cantidad en este caso 3000000 usando el while y wend
+
+    Sub sena()
+
     abono = 0
     no_abono = 0
-    abono10k = 0
+    mas10k = 0
     Total = 0
     
-    While Total <= 3000000
-        dinero_rec = Int(InputBox("Cuanto va a abonar?"))
-        If dinero_rec > 0 Then
+    While Recaudo_final <= 3000000
+        dinero = Int(InputBox("cantidad de dinero a abonar"))
+        If dinero > 0 Then
             abono = abono + 1
-            Total = Total + dinero_rec
-            If dinero_rec >= 10000 Then
-                abono10k = abono10k + 1
+            Recaudo_final = Recaudo_final + dinero
+            If dinero >= 10000 Then
+                mas10k = mas10k + 1
             End If
         Else
             no_abono = no_abono + 1
         End If
+        
     Wend
     
-    prom = Total / abono
-    MsgBox "El total recaudado es de $" & Total
+    prom = Recaudo / abono
+    MsgBox "total recaudado es de $" & Recaudo_final
     MsgBox "El promedio del recaudo es de $" & prom
-    MsgBox "La cantidad de estudiantes que donaron " & "(" & abono & ")" & " Estudiantes"
-    MsgBox "La cantidad de estudiantes que no donaron " & "(" & no_abono & ")" & " Estudiantes"
-    MsgBox "Los estudiantes que aportaron una cantidad superior a $10.000:   " & "(" & abono10k & ")" & " Estudiantes"
+    MsgBox "cantidad de estudiantes que abonaron " & "(" & abono & ")" & " Estudiantes"
+    MsgBox "cantidad de estudiantes que no abonaron " & "(" & no_abono & ")" & " Estudiantes"
+    MsgBox "estudiantes que abonaron mas de $10.000:   " & "(" & mas10k & ")" & " Estudiantes"
         
-End Sub
+    End Sub
