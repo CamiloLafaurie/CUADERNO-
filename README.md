@@ -232,3 +232,59 @@ en este programa podemos saber el total de una roleccion estudiantil, el promedi
     MsgBox "estudiantes que abonaron mas de $10.000:   " & "(" & mas10k & ")" & " Estudiantes"
         
     End Sub
+    ----------------------------------------------------------------------------
+    void main(){
+  
+  Empresa empresa1 = Empresa(pais:'alemania',numero:1042242972,oficina:'porsche');
+  Empresa empresa2 = Empresa(pais:'reino unido',numero: 3105309540,oficina:'McLaren');
+  Empresa empresa3 = Empresa(pais:'italia',numero: 63329928,oficina:'lamborghini');
+  
+  print("""
+  Usuarios de Empresas
+  1° Empresa:
+    Pais: ${empresa1.pais}.
+    Identificacion: ${empresa1.numero}.
+    Oficina: ${empresa1.oficina}.
+    
+    Codigo: ${empresa1.generarCodigo()}.
+""");
+  empresa1.cantCaracteres();
+  
+  print("""
+  2° Empresa:
+    Pais: ${empresa2.pais}.
+    Identificacion: ${empresa2.numero}.
+    Oficina: ${empresa2.oficina}.
+    
+    Codigo: ${empresa2.generarCodigo()}.
+""");
+  empresa2.cantCaracteres();
+    print("""
+  3° Empresa:
+    Pais: ${empresa3.pais}.
+    Identificacion: ${empresa3.numero}.
+    Oficina: ${empresa3.oficina}.
+    
+    Codigo: ${empresa3.generarCodigo()}.
+""");
+  empresa3.cantCaracteres();
+}
+class Empresa{
+  String? pais, oficina;
+  int? numero;
+  
+  Empresa({this.pais, this.numero, this.oficina});
+  
+  String? generarCodigo() => pais!.substring(0,3) + oficina!.substring(oficina!.length - 3, oficina!.length) + numero.toString().substring(0,3);
+  
+  void cantCaracteres(){
+    int cantPais = pais!.length;
+    int cantOfic = oficina!.length;
+    String? convNum = numero.toString();
+    int cantNum = convNum.length;
+    
+    print('pais:$cantPais,oficina:$cantOfic,numero:$convNum')
+}
+
+}
+
