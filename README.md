@@ -362,3 +362,138 @@ class Accesorio{
 }
 }
 ~~~
+
+~~~import 'package:http/http.dart'as http;
+import 'package:flutter/material.dart';
+import 'models/user.dart';
+import 'widgets/template.dart' ;
+
+void main()=>runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'My application',
+      home: Scaffold(appBar: AppBar(title: Text('ventana de inicio')),
+      body: Column(
+	children: [
+	  SizedBox(height: 15.0),
+	  Text('luis castro', style: TextStyle(fontSize: 25.0),), 
+	  SizedBox(height: 15.0), 
+	  const Image(
+  image: NetworkImage('https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg', scale: 2.0),
+),
+      SizedBox(height: 15.0),
+      Text('luiscastro123@gmail.com', style: TextStyle(fontSize: 20.0),),
+      SizedBox(height: 15.0),
+      Row(
+	mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+	children:[
+      Icon(
+	  Icons.facebook,
+	  color: Colors.blue,
+	  size: 24.0,
+	  semanticLabel: 'Text to announce in accessibility modes',
+	),
+      Icon(
+	  Icons.speaker_notes_sharp,
+	  color: Colors.orange,
+	  size: 30.0,
+	),
+      Icon(
+	  Icons.send_and_archive_outlined,
+	  color: Colors.blue,
+	  size: 36.0,
+	),
+    ],
+
+      )
+	],
+      )
+    ),
+  );
+  }
+  
+  Future<User> getUser () async{
+    final url = Uri.https('reqeres.in', '/api/users/2');
+    final response = await http.get(url);
+    return User (response.body);
+  } 
+}
+~~~
+~~~
+import 'dart:convert' as convert;
+
+class User[
+  String? nombre;
+  String? avatar;
+  String? email;
+
+  User(String json){
+    final jsonResponse = convert.jsonDecode(json);
+    nombre = jsonResponse["data"]["fristname"];
+    avatar = jsonResponse["data"]["avatar"];
+    email = jsonResponse["data"]["email"];
+  }
+]
+~~~
+~~~
+import 'package:flutter_application_1/models/user.dart';
+import 'package:flutter/material.dart';
+
+class Template extends StatelessWidget {
+  const Template([
+    Key? key,
+    required this.user,
+  ]) :super(key: key);
+
+  final User user;
+  
+  @override
+  
+}Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'My application',
+      home: Scaffold(appBar: AppBar(title: Text('ventana de inicio')),
+      body: Column(
+	children: [
+	  SizedBox(height: 15.0),
+	  Text('luis castro', style: TextStyle(fontSize: 25.0),), 
+	  SizedBox(height: 15.0), 
+	  const Image(
+  image: NetworkImage('https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg', scale: 2.0),
+),
+      SizedBox(height: 15.0),
+      Text('luiscastro123@gmail.com', style: TextStyle(fontSize: 20.0),),
+      SizedBox(height: 15.0),
+      Row(
+	mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+	children:[
+      Icon(
+	  Icons.facebook,
+	  color: Colors.blue,
+	  size: 24.0,
+	  semanticLabel: 'Text to announce in accessibility modes',
+	),
+      Icon(
+	  Icons.speaker_notes_sharp,
+	  color: Colors.orange,
+	  size: 30.0,
+	),
+      Icon(
+	  Icons.send_and_archive_outlined,
+	  color: Colors.blue,
+	  size: 36.0,
+	),
+    ],
+
+      )
+	],
+      )
+
+}
+~~~
+~~~
+http: ^0.13.5
+~~~
