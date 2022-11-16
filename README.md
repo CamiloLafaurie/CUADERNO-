@@ -362,9 +362,11 @@ class Accesorio{
 }
 }
 
-//main
+ 
+ 
+## main
 
-~~~
+
 	import 'package:flutter/material.dart';
 	import 'package:project_one/widgets/Template.dart';
 	import 'models/user.dart';
@@ -401,11 +403,11 @@ class Accesorio{
 	    return User(response.body);
 	  }
 	}
-~~~
 
-//template
 
-~~~
+##template
+
+
 	import 'package:flutter/material.dart';
 	import 'package:project_one/models/user.dart';
 
@@ -445,10 +447,9 @@ class Accesorio{
 	    );
 	  }
 	}
-~~~
 
-//User
-~~~
+## User
+
 	import 'dart:convert' as convert;
 
 	class User {
@@ -463,7 +464,6 @@ class Accesorio{
 	    email = JsonResponse["data"]["email"];
 	  }
 	}
-~~~
 
 
 
