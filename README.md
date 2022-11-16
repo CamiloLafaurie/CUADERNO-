@@ -233,60 +233,60 @@ en este programa podemos saber el total de una roleccion estudiantil, el promedi
         
     End Sub
     ----------------------------------------------------------------------------
-    void main(){
-  
-  Empresa empresa1 = Empresa(pais:'alemania',numero:1042242972,oficina:'porsche');
-  Empresa empresa2 = Empresa(pais:'reino unido',numero: 3105309540,oficina:'McLaren');
-  Empresa empresa3 = Empresa(pais:'italia',numero: 63329928,oficina:'lamborghini');
-  
-  print("""
-  Usuarios de Empresas
-  1° Empresa:
-    Pais: ${empresa1.pais}.
-    Identificacion: ${empresa1.numero}.
-    Oficina: ${empresa1.oficina}.
-    
-    Codigo: ${empresa1.generarCodigo()}.
-""");
-  empresa1.cantCaracteres();
-  
-  print("""
-  2° Empresa:
-    Pais: ${empresa2.pais}.
-    Identificacion: ${empresa2.numero}.
-    Oficina: ${empresa2.oficina}.
-    
-    Codigo: ${empresa2.generarCodigo()}.
-""");
-  empresa2.cantCaracteres();
-    print("""
-  3° Empresa:
-    Pais: ${empresa3.pais}.
-    Identificacion: ${empresa3.numero}.
-    Oficina: ${empresa3.oficina}.
-    
-    Codigo: ${empresa3.generarCodigo()}.
-""");
-  empresa3.cantCaracteres();
-}
-class Empresa{
-  String? pais, oficina;
-  int? numero;
-  
-  Empresa({this.pais, this.numero, this.oficina});
-  
-  String? generarCodigo() => pais!.substring(0,3) + oficina!.substring(oficina!.length - 3, oficina!.length) + numero.toString().substring(0,3);
-  
-  void cantCaracteres(){
-    int cantPais = pais!.length;
-    int cantOfic = oficina!.length;
-    String? convNum = numero.toString();
-    int cantNum = convNum.length;
-    
-    print('pais:$cantPais,oficina:$cantOfic,numero:$convNum')
-}
+	    void main(){
 
-}
+	  Empresa empresa1 = Empresa(pais:'alemania',numero:1042242972,oficina:'porsche');
+	  Empresa empresa2 = Empresa(pais:'reino unido',numero: 3105309540,oficina:'McLaren');
+	  Empresa empresa3 = Empresa(pais:'italia',numero: 63329928,oficina:'lamborghini');
+
+	  print("""
+	  Usuarios de Empresas
+	  1° Empresa:
+	    Pais: ${empresa1.pais}.
+	    Identificacion: ${empresa1.numero}.
+	    Oficina: ${empresa1.oficina}.
+
+	    Codigo: ${empresa1.generarCodigo()}.
+	""");
+	  empresa1.cantCaracteres();
+
+	  print("""
+	  2° Empresa:
+	    Pais: ${empresa2.pais}.
+	    Identificacion: ${empresa2.numero}.
+	    Oficina: ${empresa2.oficina}.
+
+	    Codigo: ${empresa2.generarCodigo()}.
+	""");
+	  empresa2.cantCaracteres();
+	    print("""
+	  3° Empresa:
+	    Pais: ${empresa3.pais}.
+	    Identificacion: ${empresa3.numero}.
+	    Oficina: ${empresa3.oficina}.
+
+	    Codigo: ${empresa3.generarCodigo()}.
+	""");
+	  empresa3.cantCaracteres();
+	}
+	class Empresa{
+	  String? pais, oficina;
+	  int? numero;
+
+	  Empresa({this.pais, this.numero, this.oficina});
+
+	  String? generarCodigo() => pais!.substring(0,3) + oficina!.substring(oficina!.length - 3, oficina!.length) + numero.toString().substring(0,3);
+
+	  void cantCaracteres(){
+	    int cantPais = pais!.length;
+	    int cantOfic = oficina!.length;
+	    String? convNum = numero.toString();
+	    int cantNum = convNum.length;
+
+	    print('pais:$cantPais,oficina:$cantOfic,numero:$convNum')
+	}
+
+	}
 
 ## json
 
@@ -361,139 +361,109 @@ class Accesorio{
       return nombre!;
 }
 }
+
+//main
+
+~~~
+	import 'package:flutter/material.dart';
+	import 'package:project_one/widgets/Template.dart';
+	import 'models/user.dart';
+	import 'package:http/http.dart' as http;
+
+	void main() => runApp(MyApp());
+
+	class MyApp extends StatelessWidget {
+	  @override
+	  Widget build(BuildContext context) {
+	    return MaterialApp(
+	      title: 'first app',
+	      home: Scaffold(
+		appBar: AppBar(
+		    title: Text('ventana principal'), backgroundColor: Colors.black),
+		backgroundColor: Colors.white,
+		body: FutureBuilder<User>(
+		  future: getUser(),
+		  builder: (context, snapshot) {
+		    if (snapshot.connectionState == ConnectionState.done) {
+		      User user = snapshot.data as User;
+		      return Template(user: user);
+		    }
+		    return Center(child: CircularProgressIndicator());
+		  },
+		),
+	      ),
+	    );
+	  }
+
+	  Future<User> getUser() async {
+	    final url = Uri.https('reqres.in', '/api/users/7');
+	    final response = await http.get(url);
+	    return User(response.body);
+	  }
+	}
 ~~~
 
-~~~import 'package:http/http.dart'as http;
-import 'package:flutter/material.dart';
-import 'models/user.dart';
-import 'widgets/template.dart' ;
+//template
 
-void main()=>runApp(MyApp());
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'My application',
-      home: Scaffold(appBar: AppBar(title: Text('ventana de inicio')),
-      body: Column(
-	children: [
-	  SizedBox(height: 15.0),
-	  Text('luis castro', style: TextStyle(fontSize: 25.0),), 
-	  SizedBox(height: 15.0), 
-	  const Image(
-  image: NetworkImage('https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg', scale: 2.0),
-),
-      SizedBox(height: 15.0),
-      Text('luiscastro123@gmail.com', style: TextStyle(fontSize: 20.0),),
-      SizedBox(height: 15.0),
-      Row(
-	mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-	children:[
-      Icon(
-	  Icons.facebook,
-	  color: Colors.blue,
-	  size: 24.0,
-	  semanticLabel: 'Text to announce in accessibility modes',
-	),
-      Icon(
-	  Icons.speaker_notes_sharp,
-	  color: Colors.orange,
-	  size: 30.0,
-	),
-      Icon(
-	  Icons.send_and_archive_outlined,
-	  color: Colors.blue,
-	  size: 36.0,
-	),
-    ],
-
-      )
-	],
-      )
-    ),
-  );
-  }
-  
-  Future<User> getUser () async{
-    final url = Uri.https('reqeres.in', '/api/users/2');
-    final response = await http.get(url);
-    return User (response.body);
-  } 
-}
 ~~~
-~~~
-import 'dart:convert' as convert;
+	import 'package:flutter/material.dart';
+	import 'package:project_one/models/user.dart';
 
-class User[
-  String? nombre;
-  String? avatar;
-  String? email;
+	class Template extends StatelessWidget {
+	  const Template({
+	    Key? key,
+	    required this.user,
+	  }) : super(key: key);
 
-  User(String json){
-    final jsonResponse = convert.jsonDecode(json);
-    nombre = jsonResponse["data"]["fristname"];
-    avatar = jsonResponse["data"]["avatar"];
-    email = jsonResponse["data"]["email"];
-  }
-]
-~~~
-~~~
-import 'package:flutter_application_1/models/user.dart';
-import 'package:flutter/material.dart';
+	  final User user;
 
-class Template extends StatelessWidget {
-  const Template([
-    Key? key,
-    required this.user,
-  ]) :super(key: key);
-
-  final User user;
-  
-  @override
-  
-}Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'My application',
-      home: Scaffold(appBar: AppBar(title: Text('ventana de inicio')),
-      body: Column(
-	children: [
-	  SizedBox(height: 15.0),
-	  Text('luis castro', style: TextStyle(fontSize: 25.0),), 
-	  SizedBox(height: 15.0), 
-	  const Image(
-  image: NetworkImage('https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg', scale: 2.0),
-),
-      SizedBox(height: 15.0),
-      Text('luiscastro123@gmail.com', style: TextStyle(fontSize: 20.0),),
-      SizedBox(height: 15.0),
-      Row(
-	mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-	children:[
-      Icon(
-	  Icons.facebook,
-	  color: Colors.blue,
-	  size: 24.0,
-	  semanticLabel: 'Text to announce in accessibility modes',
-	),
-      Icon(
-	  Icons.speaker_notes_sharp,
-	  color: Colors.orange,
-	  size: 30.0,
-	),
-      Icon(
-	  Icons.send_and_archive_outlined,
-	  color: Colors.blue,
-	  size: 36.0,
-	),
-    ],
-
-      )
-	],
-      )
-
-}
+	  @override
+	  Widget build(BuildContext context) {
+	    return Column(
+	      children: [
+		SizedBox(height: 15.0),
+		Text(user.nombre!, style: TextStyle(fontSize: 20.0)),
+		SizedBox(height: 15.0),
+		Image(
+		  image: NetworkImage(user.avatar!),
+		),
+		SizedBox(height: 15.0),
+		Text(user.email!, style: TextStyle(fontSize: 20.0)),
+		SizedBox(height: 15.0),
+		Row(
+		  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+		  children: [
+		    Icon(Icons.person_add_alt_sharp,
+			color: Colors.black,
+			size: 40.0,
+			semanticLabel: 'Text to announce in accessibility modes'),
+		    Icon(Icons.favorite_rounded, color: Colors.red, size: 40.0),
+		    Icon(Icons.insert_comment_rounded, color: Colors.black, size: 40.0),
+		  ],
+		)
+	      ],
+	    );
+	  }
+	}
 ~~~
+
+//User
 ~~~
-http: ^0.13.5
+	import 'dart:convert' as convert;
+
+	class User {
+	  String? nombre;
+	  String? avatar;
+	  String? email;
+
+	  User(String Json) {
+	    final JsonResponse = convert.jsonDecode(Json);
+	    nombre = JsonResponse["data"]["first_name"];
+	    avatar = JsonResponse["data"]["avatar"];
+	    email = JsonResponse["data"]["email"];
+	  }
+	}
 ~~~
+
+
+
